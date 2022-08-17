@@ -1,0 +1,16 @@
+---
+version: '3'
+volumes:
+  apereo_cas:
+services:
+  apereocas:
+    image: docker.io/library/gradle:7-jdk11
+    working_dir: /usr/src/ApereoCAS
+    ports:
+      - 8080:8080
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./:/usr/src/ofbiz-project
+    depends_on:
+      - "postgres"
+      - "vault"
